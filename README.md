@@ -2,7 +2,4 @@
 ## React series dedicated to learning how React works.
 
 You will learn about topics such as: 
-- communication between components
--  use of axios, 
--  redux pattern, 
--  among others.
+### This branch comments on the use of communication between components via props
