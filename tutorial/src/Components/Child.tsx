@@ -1,9 +1,10 @@
 function Child(props:any) {
     return (
     <div>
-        <div>
+        <p>
         Hello,  {props.name ? props.name: "unknown"}
-        </div>
+        </p>
+        <button data-testid="btn-send" onClick={props.sendDataToParent}>Send to parent</button>
     </div>);
 }
 
