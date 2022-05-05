@@ -2,6 +2,7 @@ import Child from './Child';
 import '../App.css';
 import { useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
   interface Post {
     id: number;
@@ -11,6 +12,8 @@ import axios from 'axios';
   }
 
 function Parent(props:any) {
+  const count = useSelector((state:any) => state.counter.value);
+  const arrayState = useSelector((state:any) => state.arrayState.value);
   const [counter, setCounter] = useState(0);
   const sendDataToParent = () => setCounter(counter+1);
   const [list, setList] = useState([]);
@@ -24,7 +27,11 @@ function Parent(props:any) {
   return (
     <div className="App">
       <Child sendDataToParent={sendDataToParent} />
-      <span data-testid="counter-text">{counter}</span>
+      <span data-testid="counter-text">Component state: {counter}</span>
+      <br />
+      <span>counter via store: {count}</span>
+      <br />
+      <span>counter via store | arrayState: {arrayState}</span>
       <br />
       <button data-testid="fetch-btn" onClick={fetchData}>Fetch data</button>
       <div data-testid='fetch-result'>
