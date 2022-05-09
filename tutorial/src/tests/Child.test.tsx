@@ -1,12 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 import Parent from '../Components/Parent';
 import store from '../store';
 
 test('Communication from child to parent via callback works', () => {
   render(
     <Provider store={store}>
-      <Parent />
+      <MemoryRouter>
+        <Parent />
+      </MemoryRouter>
     </Provider>
   );
   const textCounterSpan = screen.getByTestId("counter-text");

@@ -3,6 +3,7 @@ import '../App.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
   interface Post {
     id: number;
@@ -42,6 +43,9 @@ function Parent(props:any) {
           </div>
         ))}
       </div>
+      <div>
+       <Link to="/page-2">Go to page2</Link>
+    </div>
     </div>
   );
 }

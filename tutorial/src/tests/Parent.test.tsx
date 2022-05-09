@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node'
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 import Child from '../Components/Child';
 import Parent from '../Components/Parent';
 import store from '../store';
@@ -26,11 +27,9 @@ afterAll(() => server.close())
 test('We expect the text of the child component to be in the document', () => {
   render(
     <Provider store={store}>
-      <Parent />
-    </Provider>
-  );
-  render(
-    <Provider store={store}>
+      <MemoryRouter>
+        <Parent />
+      </MemoryRouter>
       <Child name="Lucas" />
     </Provider>
   );
@@ -41,7 +40,9 @@ test('We expect the text of the child component to be in the document', () => {
 test('The response is expected to be successful', async () => {
   render(
     <Provider store={store}>
-      <Parent />
+      <MemoryRouter>
+        <Parent />
+      </MemoryRouter>
     </Provider>
   );
   fireEvent.click(screen.getByText('Fetch data'))
